@@ -1,6 +1,22 @@
+# Canonical Homebrew cask for Clyde.
+#
+# This file is the source of truth. On every signed release, the
+# release workflow runs scripts/release/update-cask.sh to stamp in the
+# new version + DMG sha256 and pushes the result to
+# https://github.com/kl0sin/homebrew-tap so users can
+#
+#     brew tap kl0sin/tap
+#     brew install --cask clyde
+#
+# To bump by hand, run:
+#     scripts/release/update-cask.sh path/to/Clyde-x.y.z.dmg
+#
+# The script rewrites the `version "..."` and `sha256 "..."` lines in
+# place — keep their format intact.
+
 cask "clyde" do
-  version "0.2.1"
-  sha256 "b7d358a1e0d6e7b4b5dfe9f0ba1d97b92e74649467d02bf1b7a34f4cdb8894ce"
+  version "0.1.0"
+  sha256 "880e91159e8c06b05a5e2c3a1d54127cdf1b111564f0e749a5ab9d7df5925670"
 
   url "https://github.com/kl0sin/clyde/releases/download/v#{version}/Clyde-#{version}.dmg"
   name "Clyde"
@@ -12,7 +28,7 @@ cask "clyde" do
     strategy :github_latest
   end
 
-  auto_updates true
+  auto_updates true   # Sparkle handles auto-updates inside the app
 
   depends_on macos: ">= :ventura"
 
